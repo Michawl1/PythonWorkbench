@@ -109,8 +109,8 @@ def pointer_output():
 
 
 if __name__ == "__main__":
-    total = 24
-    winning_requirement = 40
+    total = 40
+    winning_requirement = 50
     start = 0
     end = 0
 

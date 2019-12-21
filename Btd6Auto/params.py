@@ -1,31 +1,27 @@
 import pyautogui
 
 width, height = pyautogui.size()
-widthRatio = width / 100
-heightRatio = height / 100
 winning_amount = 12
 
 # select dark castle easy
-step1 = 1075, 1200
-step2 = 1890, 1270
-step3 = 590, 765
-step4 = 765, 515
-step5 = 750, 790
+step1 = (width / 2.3814), (height / 1.2)
+step2 = (width / 1.3545), (height / 1.1339)
+step3 = (width / 4.3389), (height / 1.8824)
+step4 = (width / 3.3464), (height / 2.7961)
+step5 = (width / 3.4133), (height / 1.8182)
 
 # place obyn
-step6 = 2260, 330  # drag to below
-step7 = 1025, 590
-
-# press space #
+step6 = (width / 1.1327), (height / 4.3637)  # drag to below
+step7 = (width / 2.4976), (height / 2.4407)
 
 # scroll to super monkey
-step8 = 2360, 530
+step8 = (width / 1.0847), (height / 2.7170)
 scroll1 = -1000
-step9 = 2270, 470  # drag to below
-step10 = 1160, 570
+step9 = (width / 1.1278), (height / 3.0638)  # drag to below
+step10 = (width / 2.2069), (height / 2.5175)
 
-path1 = 495, 700
-path3 = 495, 1175
+path1 = (width / 5.1717), (height / 2.0571)
+path3 = (width / 5.1717), (height / 1.2255)
 
 """
 place at 1140, 590
@@ -36,16 +32,16 @@ upgrade 102 end of 30 start 31
 upgrade 202 end of 36 start 37
 """
 
-endstep1 = 1010, 1210
+endstep1 = (width / 2.5347), (height / 1.1901)
 
-collectStep1 = 1280, 930
+collectStep1 = (width / 2), (height / 1.5439)
 
-insta1 = 880, 715
-insta2 = 1025, 715
-insta3 = 1280, 715
-insta4 = 1520, 715
-insta5 = 1695, 715
+insta1 = (width / 2.9091), (height / 2.014)
+insta2 = (width / 2.4976), (height / 2.014)
+insta3 = (width / 2), (height / 2.014)
+insta4 = (width / 1.6842), (height / 2.014)
+insta5 = (width / 1.5103), (height / 2.014)
 # you can click anywhere after getting an insta
-anyclick = 500, 500
+anyclick = (width / 5.12), (height / 2.88)
 # one last anyclick at the end to get off insta screen
-backtohome = 100, 100
+backtohome = (width / 25.6), (height / 14.4)
