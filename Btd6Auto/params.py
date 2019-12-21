@@ -3,6 +3,7 @@ import pyautogui
 width, height = pyautogui.size()
 widthRatio = width / 100
 heightRatio = height / 100
+winning_amount = 12
 
 # select dark castle easy
 step1 = 1075, 1200

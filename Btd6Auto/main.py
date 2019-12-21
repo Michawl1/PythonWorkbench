@@ -19,13 +19,13 @@ def select_map_mode():
     auto.click(params.step4[0], params.step4[1])
     time.sleep(2)
     auto.click(params.step5[0], params.step5[1])
-    time.sleep(10)
+    time.sleep(6)
 
 
 def place_obyn():
     auto.moveTo(params.step6[0], params.step6[1])
     time.sleep(1)
-    auto.dragTo(params.step7[0], params.step7[1], duration=2, button='right')
+    auto.dragTo(params.step7[0], params.step7[1], duration=1, button='right')
     time.sleep(1)
     auto.click(params.step7[0], params.step7[1])
     time.sleep(1)
@@ -38,7 +38,7 @@ def place_super():
 
     auto.moveTo(params.step9[0], params.step9[1])
     time.sleep(1)
-    auto.dragTo(params.step10[0], params.step10[1], duration=2, button='right')
+    auto.dragTo(params.step10[0], params.step10[1], duration=1, button='right')
     time.sleep(1)
     auto.click(params.step10[0], params.step10[1])
     time.sleep(1)
@@ -64,7 +64,7 @@ def upgrade_path3():
 
 def collect_insta():
     auto.click(params.collectStep1[0], params.collectStep1[1])
-    time.sleep(1)
+    time.sleep(2)
 
     auto.click(params.insta1[0], params.insta1[1])
     time.sleep(1)
@@ -89,10 +89,17 @@ def collect_insta():
     auto.click(params.insta4[0], params.insta4[1])
     time.sleep(1)
     auto.click(params.anyclick[0], params.anyclick[1])
-    time.sleep(1)
+    time.sleep(3)
 
     auto.click(params.backtohome[0], params.backtohome[1])
-    time.sleep(1)
+    time.sleep(0.5)
+    auto.click(params.backtohome[0], params.backtohome[1])
+    time.sleep(3)
+
+
+def go_home():
+    auto.click(params.endstep1[0], params.endstep1[1])
+    time.sleep(4)
 
 
 def pointer_output():
@@ -102,50 +109,49 @@ def pointer_output():
 
 
 if __name__ == "__main__":
-    time.sleep(3)
-    select_map_mode()
-    place_obyn()
+    total = 24
+    winning_requirement = 40
+    start = 0
+    end = 0
 
-    auto.press(keys='space')
-    time.sleep(0.5)
-    auto.press(keys='space')
-    time.sleep(15)
+    for i in range(0, 10):
+        start = time.time()
+        time.sleep(2)
+        select_map_mode()
+        place_obyn()
 
-    for i in range(1, 9):
         auto.press(keys='space')
-        time.sleep(12)
-
-    auto.press(keys='space')
-    time.sleep(16)
-
-    place_super()
-
-    for i in range(11, 22):
+        time.sleep(0.5)
         auto.press(keys='space')
-        time.sleep(13)
 
-    upgrade_path3()
+        time.sleep(100)
 
-    for i in range(22, 26):
-        auto.press(keys='space')
-        time.sleep(10)
+        place_super()
 
-    upgrade_path3()
+        time.sleep(64)
 
-    for i in range(26, 31):
-        auto.press(keys='space')
-        time.sleep(20)
+        upgrade_path3()
 
-    upgrade_path1()
+        time.sleep(35)
 
-    for i in range(31, 37):
-        auto.press(keys='space')
-        time.sleep(20)
+        upgrade_path3()
 
-    upgrade_path1()
+        time.sleep(40)
 
-    for i in range(37, 40):
-        auto.press(keys='space')
-        time.sleep(20)
+        upgrade_path1()
 
-    pointer_output()
+        time.sleep(40)
+
+        upgrade_path1()
+
+        time.sleep(40)
+
+        go_home()
+        total += params.winning_amount
+
+        if total >= winning_requirement:
+            collect_insta()
+            total -= winning_requirement
+
+        end = time.time()
+        print("Runtime: {}".format(end - start))
