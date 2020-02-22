@@ -5,10 +5,14 @@
 
 import pyautogui as auto
 import time
-import Btd6Auto.params as params
+import params as params
+import sys
 
 
 def select_map_mode():
+    '''
+    Selects dark castle easy mode
+    '''
     time.sleep(1)
     auto.click(params.step1[0], params.step1[1])
     time.sleep(2)
@@ -23,6 +27,9 @@ def select_map_mode():
 
 
 def place_obyn():
+    """
+    Places obyn on dark castle
+    """
     auto.moveTo(params.step6[0], params.step6[1])
     time.sleep(1)
     auto.dragTo(params.step7[0], params.step7[1], duration=1, button='right')
@@ -32,6 +39,11 @@ def place_obyn():
 
 
 def place_super():
+    """
+    Places a super monkey on dark castle
+
+    @pre The game must have enough money to purchase a super
+    """
     auto.moveTo(params.step8[0], params.step8[1], duration=1)
     for i in range(0, 25):
         auto.scroll(params.scroll1)
@@ -45,6 +57,11 @@ def place_super():
 
 
 def upgrade_path1():
+    """
+    Upgrades path 1 on the right
+
+    @pre The game must have enough money to purchase the upgrade
+    """
     auto.click(params.step10[0], params.step10[1])
     time.sleep(1)
     auto.click(params.path1[0], params.path1[1])
@@ -54,6 +71,11 @@ def upgrade_path1():
 
 
 def upgrade_path3():
+    """
+    Upgrades path 3 on the right
+
+    @pre The game must have enough money to purchase the upgrade
+    """
     auto.click(params.step10[0], params.step10[1])
     time.sleep(1)
     auto.click(params.path3[0], params.path3[1])
@@ -63,6 +85,9 @@ def upgrade_path3():
 
 
 def collect_insta():
+    """
+    Collects insta monkeys from both the 3 and 2 reward config
+    """
     auto.click(params.collectStep1[0], params.collectStep1[1])
     time.sleep(2)
 
@@ -89,32 +114,40 @@ def collect_insta():
     auto.click(params.insta4[0], params.insta4[1])
     time.sleep(1)
     auto.click(params.anyclick[0], params.anyclick[1])
-    time.sleep(3)
+    time.sleep(1)
 
     auto.click(params.backtohome[0], params.backtohome[1])
-    time.sleep(0.5)
+    time.sleep(1)
     auto.click(params.backtohome[0], params.backtohome[1])
     time.sleep(3)
 
 
 def go_home():
+    """
+    Takes the user home after a victory in a game
+    """
     auto.click(params.endstep1[0], params.endstep1[1])
     time.sleep(4)
 
 
 def pointer_output():
+    """
+    Outputs cursor position
+    """
     while True:
         time.sleep(0.05)
         print(auto.position())
 
 
 if __name__ == "__main__":
-    total = 40
-    winning_requirement = 50
+    total = 50
+    winning_requirement = 70
+    time_modifier = 1.15
+
     start = 0
     end = 0
 
-    for i in range(0, 10):
+    while (True):
         start = time.time()
         time.sleep(2)
         select_map_mode()
@@ -124,27 +157,27 @@ if __name__ == "__main__":
         time.sleep(0.5)
         auto.press(keys='space')
 
-        time.sleep(100)
+        time.sleep(100 * time_modifier)
 
         place_super()
 
-        time.sleep(64)
+        time.sleep(64 * time_modifier)
 
         upgrade_path3()
 
-        time.sleep(35)
+        time.sleep(35 * time_modifier)
 
         upgrade_path3()
 
-        time.sleep(40)
+        time.sleep(40 * time_modifier)
 
         upgrade_path1()
 
-        time.sleep(40)
+        time.sleep(40 * time_modifier)
 
         upgrade_path1()
 
-        time.sleep(40)
+        time.sleep(40 * time_modifier)
 
         go_home()
         total += params.winning_amount
